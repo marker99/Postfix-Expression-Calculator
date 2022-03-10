@@ -4,42 +4,40 @@ import calculator.Operator;
 import calculator.Token;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
+	public static void main(String[] args) {
+        // Setup of Objects
+		Client client = new Client();
+		ArrayList<Token> tokens = new ArrayList<>();
 
-    public static void main(String[] args) {
-        Client client = new Client();
+		// User Input Handling
+		Scanner scanner = new Scanner(System.in);
+		List<String> matchList = List.of(new String[]{"+", "-", "*", "/"});
 
-        ArrayList<Token> tokens = new ArrayList<>();
+        // Prompt user for input
+		System.out.println("> Please input a Postfix Expression");
+		String userInput = scanner.nextLine();
 
-        Scanner scanner = new Scanner(System.in);
-        String s = "+";
-        if(s.equals("+")){
-            Operator o = new Operator(Operation.parseString("+"));
-        }
+        // Split user input into usable components
+		String[] userInputSplit = userInput.split(" ");
 
+        // Defining the Tokens for the TokenList
+		Token token;
+		for (String s : userInputSplit) {
+            // Magic
+			if (matchList.contains(s)) {
+				token = new Operator(Operation.parseString(s));
+			} else {
+				token = new Operand(Integer.parseInt(s));
+			}
+			tokens.add(token);
+		}
 
-
-        if (operator.getOperation() == Operation.PLUS){
-            result = value2+value1;
-        }else if (operator.getOperation() == Operation.MINUS){
-            result = value2-value1;
-        }else if (operator.getOperation() == Operation.MULTIPLY){
-            result = value2*value1;
-        }else if (operator.getOperation() == Operation.DIVISION){
-            result = value2/value1;
-        }
-
-
-/*
-        tokens.add(new Operand(5));
-        tokens.add(new Operand(10));
-        tokens.add(new Operator(Operation.MINUS));
-        tokens.add(new Operand(10));
-        tokens.add(new Operator(Operation.MULTIPLY));
-        */
-        System.out.println(client.evaluateExpression(tokens));
-    }
+        // Evaluate and print out the result. It is also here we end up crashing, a lot ;)
+		System.out.println("And the result is: " + client.evaluateExpression(tokens));
+	}
 }
