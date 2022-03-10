@@ -14,7 +14,11 @@ public class Main {
 
         ArrayList<Token> tokens = new ArrayList<>();
 
-        Scanner scanner = new Scanner();
+        Scanner scanner = new Scanner(System.in);
+        String s = "+";
+        if(s.equals("+")){
+            Operator o = new Operator(Operation.parseString("+"));
+        }
 
 
 
