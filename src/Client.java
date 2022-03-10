@@ -7,8 +7,8 @@ public class Client
 {
     CalculatorVisitor calculatorVisitor;
 
-    public Client(CalculatorVisitor calculatorVisitor) {
-        this.calculatorVisitor = calculatorVisitor;
+    public Client() {
+        this.calculatorVisitor = new CalculatorVisitor();
     }
 
     public int evaluateExpression(ArrayList<Token> tokens){
@@ -16,7 +16,6 @@ public class Client
         for (Token token : tokens) {
             token.accept(calculatorVisitor);
         }
-
 
         return calculatorVisitor.getResult();
     }

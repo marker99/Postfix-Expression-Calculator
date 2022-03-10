@@ -7,6 +7,9 @@ public class CalculatorVisitor implements Visitor, Calculator
 
     private LinkedStack<Token> tokenStack;
 
+    public CalculatorVisitor() {
+        tokenStack = new LinkedStack<>();
+    }
 
     @Override public void visit(Operand operand)
     {
