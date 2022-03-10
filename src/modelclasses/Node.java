@@ -8,6 +8,13 @@ public class Node<T> {
 		this.data = data;
 		this.nextNode = nextNode;
 	}
+	public Node(T data) {
+		new Node(data, null);
+	}
+
+	public Node() {
+		new Node(null, null);
+	}
 
 	public void setData(T data){
 		this.data = data;
