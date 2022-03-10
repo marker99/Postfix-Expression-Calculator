@@ -1,5 +1,7 @@
 package modelclasses;
 
+import java.util.EmptyStackException;
+
 public class LinkedStack<T> implements MyStack<T> {
 	private LinkedList<T> list;
 
@@ -19,6 +21,10 @@ public class LinkedStack<T> implements MyStack<T> {
 
 	@Override
 	public T pop() {
-		return list.removeFirst();
+		try {
+			return list.removeFirst();
+		} catch (MyList.EmptyListException e) {
+			throw new EmptyStackException();
+		}
 	}
 }

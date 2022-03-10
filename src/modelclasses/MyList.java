@@ -8,8 +8,9 @@ public interface MyList<T> {
 	void addToFront(T data);
 
 	T removeFirst() throws EmptyListException;
-}
 
-class EmptyListException extends Throwable {
-	// Calls directly to Super
+	class EmptyListException extends Throwable {
+		// Calls directly to Super
+	}
+
 }

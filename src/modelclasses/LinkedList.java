@@ -28,9 +28,9 @@ public class LinkedList<T> implements MyList<T> {
 	}
 
 	@Override
-	public T removeFirst() throws EmptyStackException {
+	public T removeFirst() throws EmptyListException {
 		if (isEmpty() || head == null) {
-			throw new EmptyStackException();
+			throw new EmptyListException();
 		} else {
 			Node n = head;
 			head = head.getNext();
