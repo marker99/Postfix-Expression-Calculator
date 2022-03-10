@@ -1,3 +1,5 @@
+package calculator;
+
 import modelclasses.LinkedStack;
 
 public class CalculatorVisitor implements Visitor, Calculator
@@ -18,7 +20,7 @@ public class CalculatorVisitor implements Visitor, Calculator
 
     @Override public int getResult()
     {
-        return 0;
+        return ((Operand) tokenStack.pop()).getValue();
     }
 
     private void pushOperand(Operand operand)
