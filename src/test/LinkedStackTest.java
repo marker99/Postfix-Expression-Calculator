@@ -8,33 +8,34 @@ import org.junit.jupiter.api.Test;
 import java.util.EmptyStackException;
 
 public class LinkedStackTest {
-	LinkedStack<Integer> stack;
+	public LinkedStack<Integer> stack;
 
 	@BeforeEach
-	void setup() {
+	public void setup() {
 		stack = new LinkedStack<>();
 	}
 
 	@Test
-	void testPopOnEmptyStack() {
+	public void testPopOnEmptyStack() {
 		// Newly created stack is Empty
 		Assertions.assertThrows(EmptyStackException.class, () -> stack.pop());
 	}
 
 	@Test
-	void testPopOnNotEmptyStack() {
+	public void testPopOnNotEmptyStack() {
 		stack.push(1);
 		Assertions.assertDoesNotThrow(() -> stack.pop());
 	}
 
 	@Test
-	void testIsEmpty() {
+	public void testIsEmpty() {
 		Assertions.assertTrue(stack.isEmpty());
 		stack.push(1);
 		Assertions.assertFalse(stack.isEmpty());
 	}
 
-	@Test void testPop(){
+	@Test
+	public void testPop() {
 		int i = 1;
 		stack.push(i);
 		Assertions.assertEquals(i, stack.pop());
