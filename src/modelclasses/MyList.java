@@ -3,7 +3,7 @@ package modelclasses;
 public interface MyList<T> {
 	boolean isEmpty();
 
-	int size();
+	int getSize();
 
 	void addToFront(T data);
 
