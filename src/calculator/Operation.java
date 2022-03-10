@@ -18,6 +18,15 @@ public enum Operation {
 			default -> throw new InputMismatchException("Invalid Operation");
 		};
 	}
+
+	public static String toActualString(Operation o) {
+		return switch (o) {
+			case  PLUS -> "+";
+			case  MINUS -> "-";
+			case  MULTIPLY -> "*";
+			case  DIVISION -> "/";
+		};
+	}
 }
 
 

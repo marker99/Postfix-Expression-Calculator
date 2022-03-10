@@ -2,53 +2,52 @@ package calculator;
 
 import modelclasses.LinkedStack;
 
-public class CalculatorVisitor implements Visitor, Calculator
-{
+public class CalculatorVisitor implements Visitor, Calculator {
 
-    private LinkedStack<Token> tokenStack;
+	private LinkedStack<Token> tokenStack;
 
-    public CalculatorVisitor() {
-        tokenStack = new LinkedStack<>();
-    }
+	public CalculatorVisitor() {
+		tokenStack = new LinkedStack<>();
+	}
 
-    @Override public void visit(Operand operand)
-    {
-        pushOperand(operand);
-    }
+	@Override
+	public void visit(Operand operand) {
+		pushOperand(operand);
+	}
 
-    @Override public void visit(Operator operator)
-    {
-        performOperation(operator);
-    }
+	@Override
+	public void visit(Operator operator) {
+		performOperation(operator);
+	}
 
-    @Override public int getResult()
-    {
-        return ((Operand) tokenStack.pop()).getValue();
-    }
+	@Override
+	public int getResult() {
+		return ((Operand) tokenStack.pop()).getValue();
+	}
 
-    private void pushOperand(Operand operand)
-    {
-        tokenStack.push(operand);
-    }
+	private void pushOperand(Operand operand) {
+		tokenStack.push(operand);
+	}
 
-    private void performOperation(Operator operator)
-    {
-        int value1 = ((Operand) tokenStack.pop()).getValue();
-        int value2 = ((Operand) tokenStack.pop()).getValue();
-        int result = 0;
+	private void performOperation(Operator operator) {
+		int value1 = ((Operand) tokenStack.pop()).getValue();
+		int value2 = ((Operand) tokenStack.pop()).getValue();
+		int result = 0;
 
-        if (operator.getOperation() == Operation.PLUS){
-            result = value2+value1;
-        }else if (operator.getOperation() == Operation.MINUS){
-            result = value2-value1;
-        }else if (operator.getOperation() == Operation.MULTIPLY){
-            result = value2*value1;
-        }else if (operator.getOperation() == Operation.DIVISION){
-            result = value2/value1;
-        }
+		if (operator.getOperation() == Operation.PLUS) {
+			result = value2 + value1;
+		} else if (operator.getOperation() == Operation.MINUS) {
+			result = value2 - value1;
+		} else if (operator.getOperation() == Operation.MULTIPLY) {
+			result = value2 * value1;
+		} else if (operator.getOperation() == Operation.DIVISION) {
+			result = value2 / value1;
+		}
 
-        tokenStack.push(new Operand(result));
+		System.out.println("Infix Expression: " + value2 + " " + operator + " " + value1 + " = " + result);
 
-    }
+		tokenStack.push(new Operand(result));
+
+	}
 
 }

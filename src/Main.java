@@ -8,24 +8,25 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+	// Debug mode can be turned on, in modelclasses\LinkedStack.java
 
 	public static void main(String[] args) throws Exception {
 		// Setup of Objects
 		Client client = new Client();
-		ArrayList<Token> tokens = new ArrayList<>();
 
 		// User Input Handling
 		Scanner scanner = new Scanner(System.in);
 		List<String> matchList = List.of(new String[]{"+", "-", "*", "/"});
 		List<String> quitList = List.of(new String[]{"quit", "exit", "stop", "pineapplejuice"});
 		while (true) {
-			calculationLoop(client, tokens, scanner, matchList, quitList);
+			calculationLoop(client, scanner, matchList, quitList);
 		}
 	}
 
-	private static void calculationLoop(Client client, ArrayList<Token> tokens, Scanner scanner, List<String> matchList, List<String> quitList) throws Exception {
+	private static void calculationLoop(Client client, Scanner scanner, List<String> matchList, List<String> quitList) throws Exception {
+		ArrayList<Token> tokens = new ArrayList<>();
 		// Prompt user for input
-		System.out.println("> Please input a Postfix Expression");
+		System.out.println("\n\n> Please input a Postfix Expression");
 		String userInput = scanner.nextLine();
 
 		// Split user input into usable components

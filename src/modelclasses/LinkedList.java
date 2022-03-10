@@ -1,7 +1,5 @@
 package modelclasses;
 
-import java.util.EmptyStackException;
-
 public class LinkedList<T> implements MyList<T> {
 	private Node<T> head;
 	private int size;
@@ -37,5 +35,21 @@ public class LinkedList<T> implements MyList<T> {
 			size--;
 			return (T) n.getData();
 		}
+	}
+
+	@Override
+	public String toString() {
+		if (isEmpty()) {
+			return "Empty";
+		}
+		StringBuilder s = new StringBuilder();
+		s.append(head.getData().toString());
+
+		Node<T> currentNode = head;
+		while (currentNode.getNext() != null) {
+			currentNode = currentNode.getNext();
+			s.append(", ").append(currentNode.getData().toString());
+		}
+		return s.toString();
 	}
 }
