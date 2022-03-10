@@ -1,16 +1,19 @@
 public class Operand extends Token
 {
-    private Operation operation;
+    private int value;
+
+    public Operand(int value) {
+        this.value = value;
+    }
 
     @Override public void accept(CalculatorVisitor visitor)
     {
-        super.accept(visitor);
+        visitor.visit(this);
     }
 
     public int getValue()
     {
-        return 0;
+        return value;
     }
-
 
 }
