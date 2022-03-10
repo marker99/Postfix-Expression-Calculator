@@ -39,12 +39,10 @@ public class CalculatorVisitor implements Visitor, Calculator
 
         if (operator.getOperation() == Operation.PLUS){
             result = value2+value1;
-
         }else if (operator.getOperation() == Operation.MINUS){
             result = value2-value1;
         }else if (operator.getOperation() == Operation.MULTIPLY){
             result = value2*value1;
-
         }else if (operator.getOperation() == Operation.DIVISION){
             result = value2/value1;
         }
