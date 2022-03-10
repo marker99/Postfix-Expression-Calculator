@@ -1,3 +1,5 @@
+package calculator;
+
 import modelclasses.LinkedStack;
 
 public class CalculatorVisitor implements Visitor, Calculator
