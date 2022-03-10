@@ -8,6 +8,7 @@ public class LinkedList<T> implements MyList<T> {
 
 	public LinkedList() {
 		size = 0;
+		head = null;
 	}
 
 	@Override
@@ -28,7 +29,7 @@ public class LinkedList<T> implements MyList<T> {
 
 	@Override
 	public T removeFirst() throws EmptyStackException {
-		if (isEmpty()) {
+		if (isEmpty() || head == null) {
 			throw new EmptyStackException();
 		} else {
 			Node n = head;
