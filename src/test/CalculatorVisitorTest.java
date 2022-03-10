@@ -1,5 +1,10 @@
 package test;
 
+import calculator.CalculatorVisitor;
+import calculator.Operand;
+import calculator.Operation;
+import calculator.Operator;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,37 +16,26 @@ public class CalculatorVisitorTest {
 	@BeforeEach
 	public void setup() {
 		cv = new CalculatorVisitor();
-		operand = new Operand();
-		operator = new Operator();
+		operand = new Operand(3);
+		operator = new Operator(Operation.PLUS);
 	}
 
 	@Test
 	public void testVisitAsOperand() {
-		cv.visit(operand);
+		Assertions.assertDoesNotThrow(() -> cv.visit(operand));
 	}
 
 	@Test
 	public void testVisitAsOperator() {
-		cv.visit(operator);
-	}
-
-	@Test
-	public void testPushOperand() {
-		cv.pushOperand(operand);
-	}
-
-	@Test
-	public void testPerformOperation() {
-		cv.pushOperand(operand);
-		cv.pushOperand(operand);
-		cv.performOperation(operator);
+		Assertions.assertDoesNotThrow(() -> cv.visit(operator));
 	}
 
 	@Test
 	public void testGetResult() {
-		cv.pushOperand(operand);
-		cv.pushOperand(operand);
-		cv.performOperation(operator);
-		cv.getResult();
+		operand.accept(cv);
+		operand.accept(cv);
+		operator.accept(cv);
+		int result = 2 * operand.getValue();
+		Assertions.assertEquals(result, cv.getResult());
 	}
 }
