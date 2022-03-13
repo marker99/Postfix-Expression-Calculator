@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.EmptyStackException;
+
 public class CalculatorVisitorTest {
 	private CalculatorVisitor cv;
 	private Operand operand;
@@ -27,6 +29,10 @@ public class CalculatorVisitorTest {
 
 	@Test
 	public void testVisitAsOperator() {
+		Assertions.assertThrows(EmptyStackException.class, () -> cv.visit(operator));
+		// Putting numbers in, to stop the error
+		cv.visit(operand);
+		cv.visit(operand);
 		Assertions.assertDoesNotThrow(() -> cv.visit(operator));
 	}
 
